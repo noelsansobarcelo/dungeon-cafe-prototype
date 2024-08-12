@@ -12,7 +12,7 @@
 [ext_resource type="Material" uid="uid://0828pxpypo6k" path="res://world/sparkle/sparkle_mat.tres" id="11_rf0vm"]
 [ext_resource type="ArrayMesh" uid="uid://cbvn8fwufde7c" path="res://world/box_metal/bevel-box.obj" id="12"]
 [ext_resource type="Material" uid="uid://duageqxj0x4k1" path="res://world/box_lit/box-lit_mat.tres" id="12_e4oia"]
-[ext_resource type="PackedScene" uid="uid://cdk6hwb4hi2wc" path="res://Player/player.tscn" id="14_gaxn3"]
+[ext_resource type="PackedScene" uid="uid://cdk6hwb4hi2wc" path="res://player/player.tscn" id="14_gaxn3"]
 [ext_resource type="Environment" uid="uid://55j275wwndlp" path="res://world/world_env.tres" id="15"]
 
 [sub_resource type="BoxMesh" id="5"]

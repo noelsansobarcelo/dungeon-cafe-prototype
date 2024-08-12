@@ -1,13 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdk6hwb4hi2wc"]
+[gd_scene load_steps=4 format=3 uid="uid://cdk6hwb4hi2wc"]
 
-[ext_resource type="Script" path="res://Player/player.gd" id="1_2f8j2"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_1f73n"]
+[ext_resource type="PackedScene" uid="uid://dlpllntouno38" path="res://guns/AxeGun/AxeGun.fbx" id="2_fta6d"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3rsb5"]
 radius = 0.3
 height = 1.8
 
 [node name="Player" type="CharacterBody3D"]
-script = ExtResource("1_2f8j2")
+script = ExtResource("1_1f73n")
 camera_sens = 3.0
 
 [node name="CShape" type="CollisionShape3D" parent="."]
@@ -16,4 +17,7 @@ shape = SubResource("CapsuleShape3D_3rsb5")
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
-fov = 80.0
+fov = 95.8
+
+[node name="AxeGun" parent="Camera" instance=ExtResource("2_fta6d")]
+transform = Transform3D(-0.334421, 0.10849, -0.718604, -0.554565, 0.473156, 0.329515, 0.469701, 0.635887, -0.122586, 1.15652, -0.631644, -1.12594)
