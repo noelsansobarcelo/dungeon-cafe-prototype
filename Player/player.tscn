@@ -1,25 +1,41 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdk6hwb4hi2wc"]
+[gd_scene load_steps=9 format=3 uid="uid://cdk6hwb4hi2wc"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_1f73n"]
-[ext_resource type="PackedScene" uid="uid://dlpllntouno38" path="res://guns/AxeGun/AxeGun.fbx" id="2_fta6d"]
+[ext_resource type="PackedScene" uid="uid://du3k3a4y43xs0" path="res://player/PSX_Cleaver/Cleaver(glb).glb" id="2_bw7pn"]
+[ext_resource type="Script" path="res://player/Hitbox.gd" id="3_w0smd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3rsb5"]
 radius = 0.3
 height = 1.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rs11q"]
+radius = 0.25
 
 [sub_resource type="Animation" id="Animation_3pfhf"]
 resource_name = "hit"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera/AxeGun:position")
+tracks/0/path = NodePath("Camera/PlayerHand:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"transitions": PackedFloat32Array(0.5, 2, -0.5),
 "update": 0,
-"values": [Vector3(1.15652, -0.631644, -1.12594), Vector3(1.15652, -0.631644, -2.01154), Vector3(1.15652, -0.631644, -1.12594)]
+"values": [Vector3(-0.0872665, -1.5708, 0), Vector3(-0.0872665, -1.5708, 1.74533), Vector3(-0.0872665, -1.5708, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera/PlayerHand/Cleaver(glb)/Hitbox/CollisionShape3D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_4t3po"]
@@ -27,14 +43,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera/AxeGun:position")
+tracks/0/path = NodePath("Camera/PlayerHand:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1.15652, -0.631644, -1.12594)]
+"values": [Vector3(-0.0872665, -1.5708, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera/PlayerHand/Cleaver(glb)/Hitbox/CollisionShape3D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4hmna"]
@@ -53,12 +81,33 @@ shape = SubResource("CapsuleShape3D_3rsb5")
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
-fov = 95.8
+fov = 90.0
 
-[node name="AxeGun" parent="Camera" instance=ExtResource("2_fta6d")]
-transform = Transform3D(-0.334421, 0.10849, -0.718604, -0.554565, 0.473156, 0.329515, 0.469701, 0.635887, -0.122586, 1.15652, -0.631644, -1.12594)
+[node name="PlayerHand" type="Node3D" parent="Camera"]
+transform = Transform3D(-4.37114e-08, 0.0871557, -0.996195, 0, 0.996195, 0.0871557, 1, 3.8097e-09, -4.35451e-08, 0.492, -0.667, -0.659)
+metadata/_edit_group_ = true
+
+[node name="Cleaver(glb)" parent="Camera/PlayerHand" instance=ExtResource("2_bw7pn")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.1, 0)
+
+[node name="Hitbox" type="Area3D" parent="Camera/PlayerHand/Cleaver(glb)"]
+transform = Transform3D(1, 2.22044e-15, -3.55271e-14, -2.22045e-15, 1, -7.45058e-08, 3.55271e-14, 7.45058e-08, 1, -0.0856692, 0.195286, 0.022482)
+script = ExtResource("3_w0smd")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera/PlayerHand/Cleaver(glb)/Hitbox"]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, -4.47035e-08, 0, -1.65894e-16, 1, -0.0648603, 0.0135071, 0.00163391)
+shape = SubResource("SphereShape3D_rs11q")
+
+[node name="PlayerLight" type="OmniLight3D" parent="Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0913349, 0.0944344, -1.07)
+light_color = Color(0.909804, 0.803922, 0.666667, 1)
+light_energy = 4.75
+omni_range = 1.0
+omni_attenuation = 0.0915055
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_4hmna")
 }
+speed_scale = 5.0

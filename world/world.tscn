@@ -42,7 +42,7 @@ transform = Transform3D(0.831023, 0, -0.556238, 0, 1, 0, 0.556238, 0, 0.831023, 
 
 [node name="DirectionalLight" type="DirectionalLight3D" parent="OrbitPoint"]
 transform = Transform3D(0.999229, -0.0247207, 0.0305003, 0, 0.776871, 0.629659, -0.0392604, -0.629174, 0.776272, 5.08833, 2.79045, -0.311581)
-light_energy = 1.5
+light_energy = 0.187
 
 [node name="Background" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
@@ -82,6 +82,7 @@ _reverse_direction = true
 
 [node name="OmniLight" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.784, 0)
+visible = false
 light_color = Color(0.909804, 0.803922, 0.666667, 1)
 light_energy = 4.75
 omni_range = 3.0
@@ -89,6 +90,7 @@ omni_attenuation = 0.0915055
 
 [node name="OmniLight2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.784, 0)
+visible = false
 light_color = Color(0.909804, 0.803922, 0.666667, 1)
 light_energy = 4.75
 omni_range = 3.0
