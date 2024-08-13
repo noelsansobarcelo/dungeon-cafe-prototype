@@ -88,7 +88,7 @@ transform = Transform3D(-4.37114e-08, 0.0871557, -0.996195, 0, 0.996195, 0.08715
 metadata/_edit_group_ = true
 
 [node name="Cleaver(glb)" parent="Camera/PlayerHand" instance=ExtResource("2_bw7pn")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.1, 0)
+transform = Transform3D(4, 0, 1.15955e-08, -2.98023e-08, 4, -1.86257e-09, -1.83017e-08, -9.59147e-10, 4, 5.96046e-08, 0.1, 2.98023e-08)
 
 [node name="Hitbox" type="Area3D" parent="Camera/PlayerHand/Cleaver(glb)"]
 transform = Transform3D(1, 2.22044e-15, -3.55271e-14, -2.22045e-15, 1, -7.45058e-08, 3.55271e-14, 7.45058e-08, 1, -0.0856692, 0.195286, 0.022482)

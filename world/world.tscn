@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://world/spatial_sin_pan.gd" id="3"]
 [ext_resource type="Material" path="res://world/floor/floor.tres" id="4"]
 [ext_resource type="ArrayMesh" uid="uid://dcm073t81n4p0" path="res://world/light-shaft/light-shaft_mesh.res" id="5_4haum"]
-[ext_resource type="PackedScene" path="res://world/shadow/shadow.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://clmxivj0aauey" path="res://world/shadow/shadow.tscn" id="6"]
 [ext_resource type="ArrayMesh" uid="uid://cd1odanjyg1jw" path="res://world/box_lit/box.obj" id="8"]
 [ext_resource type="Material" uid="uid://5nocpdx2io83" path="res://world/box_metal/box-metal_mat.tres" id="8_yroyl"]
 [ext_resource type="Script" path="res://world/Enemy.gd" id="10_igegh"]
