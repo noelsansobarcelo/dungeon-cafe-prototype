@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c1xno4bm2dlyj"]
+[gd_scene load_steps=20 format=3 uid="uid://c1xno4bm2dlyj"]
 
 [ext_resource type="Material" uid="uid://cg1031m8scq7b" path="res://world/light-shaft/light-shaft_mat.tres" id="2"]
 [ext_resource type="Script" path="res://world/spatial_sin_pan.gd" id="3"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" path="res://world/shadow/shadow.tscn" id="6"]
 [ext_resource type="ArrayMesh" uid="uid://cd1odanjyg1jw" path="res://world/box_lit/box.obj" id="8"]
 [ext_resource type="Material" uid="uid://5nocpdx2io83" path="res://world/box_metal/box-metal_mat.tres" id="8_yroyl"]
+[ext_resource type="Script" path="res://world/Enemy.gd" id="10_igegh"]
 [ext_resource type="Material" uid="uid://6l26m1a5na2u" path="res://world/sparkle/sparkle_particle-process_mat.tres" id="10_rc0nk"]
 [ext_resource type="PackedScene" uid="uid://k0jtpj0fkkrv" path="res://world/crystal/crystal_mesh.tscn" id="11"]
 [ext_resource type="Material" uid="uid://0828pxpypo6k" path="res://world/sparkle/sparkle_mat.tres" id="11_rf0vm"]
@@ -26,6 +27,9 @@ subdivide_depth = 25
 [sub_resource type="QuadMesh" id="2"]
 material = ExtResource("11_rf0vm")
 size = Vector2(0.3, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1yh8o"]
+size = Vector3(2, 2, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ey8m"]
 size = Vector3(51.3754, 5.81641, 55.9868)
@@ -65,6 +69,13 @@ fixed_fps = 15
 interpolate = false
 process_material = ExtResource("10_rc0nk")
 draw_pass_1 = SubResource("2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="BoxMetal"]
+script = ExtResource("10_igegh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxMetal/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0102539, 0.0989995, 0.0126038)
+shape = SubResource("BoxShape3D_1yh8o")
 
 [node name="BoxMetalShadow" parent="." instance=ExtResource("6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
